@@ -4,6 +4,24 @@ This file describes the changes in the versions of **SDBC-SQLite (PySQLite)** th
 
 ---
 
+## V1.2.0
+
+### Manuals built into the extension
+
+- Two manuals in HTML format are included in the `.oxt` package and can be read without an Internet connection: the **PySQLite user manual** and the guide to **exact decimals in SQL commands**.
+- Added the **"?"** button in the **Diagnostic log** page of the global options and in the settings window of the Base document. The button opens the manuals in the default browser.
+
+### Update check
+
+- Added to the extension metadata the address of the update information file, used by LibreOffice's **Check for Updates** mechanism.
+
+### Testing
+
+- The automated suite now has **663 tests**, including checks for the conversion of the manuals to HTML, for opening them and for the generation of the update metadata.
+- Verified in LibreOffice 26.8 on Windows 11 that the manuals open through the "?" button in the global settings and in the document settings.
+
+---
+
 ## V1.1.0
 
 ### SQLite driver for LibreOffice Base

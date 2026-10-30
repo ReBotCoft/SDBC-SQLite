@@ -81,6 +81,7 @@ class OptionsHandler(unohelper.Base, XServiceInfo, XContainerWindowEventHandler)
         if key == "log":
             listeners.append(form.on_click(window, "btn_log", lambda: self._open_log(window)))
             listeners.append(form.on_click(window, "btn_folder", lambda: self._open_folder(window)))
+            listeners.append(form.on_click(window, "btn_manuals", lambda: self._open_manuals(window)))
             listeners.append(form.on_click(window, "btn_browse", lambda: self._browse(window)))
         self._pages[key] = listeners
         form.apply_values(window, self._layout, settings.all_values(), key)
@@ -103,6 +104,9 @@ class OptionsHandler(unohelper.Base, XServiceInfo, XContainerWindowEventHandler)
 
     def _open_log(self, window):
         settings_dialogs.open_log(self._ctx, self._peer(window), self._language)
+
+    def _open_manuals(self, window):
+        settings_dialogs.open_manuals(self._ctx, self._peer(window), self._language)
 
     def _browse(self, window):
         edit = window.getControl("ctl_LogPath")

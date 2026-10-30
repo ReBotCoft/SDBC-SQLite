@@ -642,7 +642,7 @@ In SQL commands numbers are written with the point, for example `12.35`. In the 
 
 Another program that opens the file sees the internal representation. Triggers, `CHECK` constraints, `DEFAULT` values, generated columns and indexes with expressions also require particular attention: the text of the definition is not treated as a normal command for reading or updating decimals.
 
-For examples, roundings, rejections by the translator and the handling of views, see the document "Exact Decimals in SQL Commands" (in the `docs` folder, "Manual - Exact Decimals in SQL Commands"). The document distinguishes the operations translated by the driver from the expressions that SQLite runs on the stored values.
+For examples, roundings, rejections by the translator and the handling of views, see the document "Exact Decimals in SQL Commands" (in the `docs` folder of the extension's source code, downloadable from the project's GitHub repository, "Manual - Exact Decimals in SQL Commands"). The document distinguishes the operations translated by the driver from the expressions that SQLite runs on the stored values.
 
 ### **3.12. Forms, data refresh and macros**
 
@@ -933,7 +933,7 @@ Check opening, a few tables and the functions used by the document before replac
 
 ### **6.5. Appendix E — Reference documentation**
 
-For decimals, use the document "Exact Decimals in SQL Commands" (in the `docs` folder, "Manual - Exact Decimals in SQL Commands").
+For decimals, use the document "Exact Decimals in SQL Commands" (in the `docs` folder of the extension's source code, downloadable from the project's GitHub repository, "Manual - Exact Decimals in SQL Commands").
 
 The general instructions for LibreOffice Base and the SQL reference of SQLite remain in their respective guides. This manual describes the integration provided by PySQLite and does not replace those references.
 

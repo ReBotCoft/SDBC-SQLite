@@ -333,6 +333,12 @@ CONNECTION_NOTE_DOCUMENT = {
 STRINGS = {
     "btn_log": {"it": "Apri il registro", "en": "Open the log"},
     "btn_folder": {"it": "Apri la cartella", "en": "Open the folder"},
+    "btn_manuals": {"it": "?", "en": "?"},
+    "btn_manuals_tip": {"it": "Apri i manuali", "en": "Open the manuals"},
+    "msg_manuals_missing": {"it": "Non trovo i manuali nell'estensione.\nCartella: {folder}",
+                            "en": "The manuals are not in the extension.\nFolder: {folder}"},
+    "msg_manuals_failed": {"it": "Non riesco ad aprire i manuali:\n{folder}",
+                           "en": "Cannot open the manuals:\n{folder}"},
     "msg_folder_failed": {"it": "Non riesco ad aprire la cartella:\n{path}", "en": "Cannot open the folder:\n{path}"},
     "msg_log_missing": {"it": "Il registro non esiste ancora.\nCartella: {folder}",
                         "en": "The log does not exist yet.\nFolder: {folder}"},

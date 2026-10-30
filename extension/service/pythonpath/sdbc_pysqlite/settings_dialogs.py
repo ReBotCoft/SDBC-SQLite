@@ -5,6 +5,7 @@ import math
 import os
 import tempfile
 import traceback
+import urllib.parse
 
 import unohelper
 
@@ -14,9 +15,11 @@ from com.sun.star.awt.MessageBoxType import QUERYBOX
 from com.sun.star.ui.dialogs.TemplateDescription import FILEOPEN_SIMPLE
 from com.sun.star.ui.dialogs.TemplateDescription import FILESAVE_AUTOEXTENSION
 
+from sdbc_pysqlite import IDENTIFIER
 from sdbc_pysqlite import LOG_FILE_NAME
 from sdbc_pysqlite import address
 from sdbc_pysqlite import logger
+from sdbc_pysqlite import manuals
 from sdbc_pysqlite import messages
 from sdbc_pysqlite.errors import DriverError
 from sdbc_pysqlite import settings_form as form
@@ -44,18 +47,21 @@ def ask_yes_no(ctx, parent, title, text):
         box.dispose()
 
 
-def _add_button(dialog_model, name, label, x, y, width, height, push_type=0, multiline=False, default=False):
+def _add_button(dialog_model, name, label, x, y, width, height, push_type=0, multiline=False, default=False,
+                tip=None):
     button = dialog_model.createInstance("com.sun.star.awt.UnoControlButtonModel")
     for key, value in (("PositionX", x), ("PositionY", y), ("Width", width), ("Height", height),
                        ("Label", label), ("PushButtonType", push_type), ("MultiLine", multiline),
                        ("DefaultButton", default), ("Step", 0)):
         setattr(button, key, value)
+    if tip:
+        button.HelpText = tip
     dialog_model.insertByName(name, button)
 
 
 def add_options_buttons(dialog_model, lay, with_log):
     top = form.MARGIN + form.CONTENT_HEIGHT + 4
-    third = (form.PAGE_WIDTH - 4 * form.MARGIN) // 3
+    third = (form.PAGE_WIDTH - 5 * form.MARGIN - form.MANUALS_BUTTON_WIDTH) // 3
     _add_button(dialog_model, "btn_driver", model.text("btn_driver_defaults", lay.language),
                 form.MARGIN, top, third if with_log else 120, form.BUTTON_HEIGHT)
     if with_log:
@@ -63,6 +69,9 @@ def add_options_buttons(dialog_model, lay, with_log):
                     2 * form.MARGIN + third, top, third, form.BUTTON_HEIGHT)
         _add_button(dialog_model, "btn_folder", model.text("btn_folder", lay.language),
                     3 * form.MARGIN + 2 * third, top, third, form.BUTTON_HEIGHT)
+        _add_button(dialog_model, "btn_manuals", model.text("btn_manuals", lay.language),
+                    4 * form.MARGIN + 3 * third, top, form.MANUALS_BUTTON_WIDTH, form.BUTTON_HEIGHT,
+                    tip=model.text("btn_manuals_tip", lay.language))
 
 
 def pick_folder(ctx, parent, language, current_path):
@@ -175,6 +184,38 @@ def open_log_folder(ctx, parent, language):
                      model.text("msg_folder_failed", language, path=folder), error=True)
 
 
+def package_folder(ctx):
+    provider = ctx.getValueByName("/singletons/com.sun.star.deployment.PackageInformationProvider")
+    location = provider.getPackageLocation(IDENTIFIER)
+    prefix = "vnd.sun.star.expand:"
+    if location.startswith(prefix):
+        expander = ctx.getValueByName("/singletons/com.sun.star.util.theMacroExpander")
+        location = expander.expandMacros(urllib.parse.unquote(location[len(prefix):]))
+    return unohelper.fileUrlToSystemPath(location) if location else None
+
+
+def open_manuals(ctx, parent, language):
+    title = model.text("msg_title", language)
+    folder = None
+    try:
+        folder = package_folder(ctx)
+        pages = manuals.manual_pages(folder) if folder else []
+    except Exception:
+        logger.error("settings_dialogs.open_manuals", traceback.format_exc())
+        pages = []
+    if not pages:
+        show_message(ctx, parent, title, model.text("msg_manuals_missing", language, folder=folder or "?"),
+                     error=True)
+        return
+    try:
+        shell = ctx.ServiceManager.createInstanceWithContext("com.sun.star.system.SystemShellExecute", ctx)
+        for page in pages:
+            shell.execute(unohelper.systemPathToFileUrl(page), "", 0)
+    except Exception:
+        logger.error("settings_dialogs.open_manuals", traceback.format_exc())
+        show_message(ctx, parent, title, model.text("msg_manuals_failed", language, folder=folder), error=True)
+
+
 def open_log(ctx, parent, language):
     path = os.path.join(logger.log_folder(), LOG_FILE_NAME)
     title = model.text("msg_title", language)
@@ -212,6 +253,9 @@ def run_document_dialog(ctx, language, extension_values, document_values, addres
                 form.MARGIN, top + 24, 100, form.BUTTON_HEIGHT)
     _add_button(dialog_model, "btn_folder", model.text("btn_folder", language),
                 2 * form.MARGIN + 100, top + 24, 100, form.BUTTON_HEIGHT)
+    _add_button(dialog_model, "btn_manuals", model.text("btn_manuals", language),
+                3 * form.MARGIN + 200, top + 24, form.MANUALS_BUTTON_WIDTH, form.BUTTON_HEIGHT,
+                tip=model.text("btn_manuals_tip", language))
     _add_button(dialog_model, "btn_ok", model.text("btn_ok", language),
                 width - 2 * 54 - 2 * form.MARGIN, top + 24, 54, form.BUTTON_HEIGHT, default=True)
     _add_button(dialog_model, "btn_cancel", model.text("btn_cancel", language),
@@ -275,6 +319,8 @@ def run_document_dialog(ctx, language, extension_values, document_values, addres
         listeners.append(form.on_click(dialog, "btn_log", lambda: open_log(ctx, dialog.getPeer(), language)))
         listeners.append(form.on_click(dialog, "btn_folder",
                                        lambda: open_log_folder(ctx, dialog.getPeer(), language)))
+        listeners.append(form.on_click(dialog, "btn_manuals",
+                                       lambda: open_manuals(ctx, dialog.getPeer(), language)))
         dialog.execute()
     finally:
         dialog.dispose()
