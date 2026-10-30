@@ -1,0 +1,55 @@
+SQLite (pysqlite) SDBC Driver
+Copyright (c) 2026 ReBotCoft
+
+NOTICE ON LICENSES AND THE ORIGIN OF THE COMPONENTS
+
+1. Project license
+   The driver (the extension's Python code, tests, build tools and documents) is distributed under the
+   GNU Lesser General Public License, version 3 or later (LGPL-3.0-or-later). The full text is in
+   extension/registration/license_en.txt. Every code file carries the line
+   "SPDX-License-Identifier: LGPL-3.0-or-later".
+
+2. SQLite
+   The SQLite library that ships with the extension (extension/service/pythonpath/sdbc_pysqlite/native/win-x64/
+   sdbcsql.dll) is copied unmodified from the official site https://sqlite.org (the file sqlite3.dll, renamed
+   sdbcsql.dll). SQLite is in the public domain and is not covered by the license in point 1. The authors'
+   statement and the exact origin (version, checksums) are in the files LICENSE-SQLite.txt and SQLITE.txt,
+   in the same folder.
+
+3. Icons
+   The extension's icons (the folders assets/icons and extension/images) were created by the project author
+   with the help of an artificial-intelligence image tool, starting from a prompt written by the author. They do not
+   come from third-party collections and do not reproduce third-party images. They are released under the same
+   license as the project (point 1), to the extent that copyright exists in images generated in this way.
+
+4. Independent writing of the code
+   The driver's code was written for this project. To understand how LibreOffice Base and other databases
+   behave, the documentation and the public sources of LibreOffice, of HSQLDB and of the SQLiteOOo extension
+   were consulted, and the observed behavior was reproduced: no code was copied from those projects. An
+   automatic comparison of the code text with the Python projects SQLiteOOo and jdbcDriverOOo (2026-10-27)
+   found in common only the import lines for the interfaces that LibreOffice requires of every SDBC driver.
+   The LibreOffice API interfaces (com.sun.star.*) are those documented by the LibreOffice project, which the
+   extension uses without distributing them.
+
+5. No affiliation
+   This project is independent. It is not produced, approved or sponsored by The Document Foundation,
+   by LibreOffice, by HSQLDB, by the authors of SQLite or by the authors of SQLiteOOo or jdbcDriverOOo. The names
+   LibreOffice, Base, HSQLDB and SQLite are used only to indicate the driver's compatibility and
+   belong to their respective owners.
+
+6. Warranty
+   The software is provided "as is", without warranties of any kind, as provided by the license in point 1.
+
+7. Anyone who modifies or redistributes the driver
+   - The driver remains under LGPL 3 or later: whoever modifies and distributes it does so under the same license
+     (or under the GNU GPL 3, which the LGPL permits for modified versions) and makes the sources
+     available. Parts derived from the code cannot move to permissive licenses (MIT, Apache).
+   - A separate program that uses the driver (a macro, another extension) may have whatever license it
+     prefers, provided its terms do not prevent modifying the driver and reverse engineering it to debug
+     the modifications; it must state that the driver is used and under which license, and the licenses must be distributed.
+   - A new file written by whoever modifies the driver may have a permissive license (for example MIT), but the driver as a
+     whole remains under the LGPL and must also be distributed without that file.
+   - The copyright holder may offer the same code under another license; for the code of other
+     contributors their consent is required.
+   - SQLite remains in the public domain, with its text in the folder indicated in point 2.
+   This point is a summary, not legal advice: the text of the license prevails.

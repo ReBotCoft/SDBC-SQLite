@@ -1,0 +1,35 @@
+SQLite included in the extension (64-bit Windows)
+=================================================
+
+File:        sdbcsql.dll
+Origin:      sqlite.org, "Precompiled Binaries for Windows", sqlite-dll-win-x64-3540100.zip
+             (the sqlite3.dll file from the zip, renamed sdbcsql.dll, without any modification)
+Version:     SQLite 3.54.1 (SQLITE_VERSION_NUMBER 3054001)
+Source ID:   2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76
+Size:        3,519,488 bytes
+SHA-256:     4b59d3cded9dc1608544160f3b4b10ac974c6ac0d6ffc23064e5f4c8dbd05aea
+Depends only on:  KERNEL32.dll
+
+Original zip:      sqlite-dll-win-x64-3540100.zip (1,450,919 bytes), contains sqlite3.dll (3,519,488 bytes) and sqlite3.def
+  SHA-256 of the zip:    f436f53ad8f965af43f3817b42c99c0689e6787f6b7ace208fe38dab7ffc4971
+  SHA3-256 of the zip:   c2d09c8babb9399277055c057c97a53f1ffd7c5f11d0c1f2118ffdfa39f2daa4
+                        (this is the one published by sqlite.org: comparison succeeded on 2026-10-24)
+  SHA-256 of sqlite3.dll in the zip: 4b59d3cded9dc1608544160f3b4b10ac974c6ac0d6ffc23064e5f4c8dbd05aea
+                        (identical to that of sdbcsql.dll: the DLL is the authors' own, unmodified)
+
+Why it is called sdbcsql.dll: LibreOffice already has its own sqlite3.dll (a reduced one) in memory; with a
+different name and loaded by full path, our copy is not confused with that one.
+
+Downloaded on:  2026-10-18, from https://sqlite.org/download.html (section "Precompiled Binaries for Windows")
+Release notes: https://sqlite.org/releaselog/3_54_1.html
+
+Corresponding sources (amalgamation 3.54.1, same Source ID as the DLL; not in the repository):
+  sqlite3.c   9,582,521 bytes   SHA-256 0c657666d819f261cc4007526ad57e1669de9949df7a8ea847aa284a2bf0ee52
+  sqlite3.h     695,729 bytes   SHA-256 d6c84557261893439b341d2e6c35187ae3ea24fbfd843ad94616f72d89242b8c
+
+License: SQLite is in the public domain (https://sqlite.org/copyright.html); the text is in LICENSE-SQLite.txt.
+
+To check the file (command prompt):  certutil -hashfile sdbcsql.dll SHA256
+To check the downloaded zip (SHA3-256, to compare with the sqlite.org download page):
+  python -c "import hashlib; print(hashlib.sha3_256(open('sqlite-dll-win-x64-3540100.zip','rb').read()).hexdigest())"
+The original zip is not in the repository: it can be downloaded from https://sqlite.org/download.html (section "Precompiled Binaries for Windows").

@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Build output (the .oxt is attached to each release, not committed)
+dist/
+
+# LibreOffice lock files
+.~lock.*#
+*.lck
+
+# Test databases
+*.db
+*.sqlite
+*.sqlite3

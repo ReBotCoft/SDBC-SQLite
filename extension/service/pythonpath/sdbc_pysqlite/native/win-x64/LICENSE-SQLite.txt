@@ -1,0 +1,20 @@
+SQLite - license
+================
+
+The library `sdbcsql.dll` in this folder is SQLite (https://sqlite.org), copied unmodified from the official
+site and renamed (see SQLITE.txt).
+
+SQLite is in the public domain: its authors disclaim copyright and allow it to be copied, modified,
+distributed and used, including for commercial purposes, without any license obligations. Official statement:
+https://sqlite.org/copyright.html
+
+In the first lines of every SQLite source file (sqlite3.h, sqlite3.c) one reads, in place of a legal notice:
+
+    The author disclaims copyright to this source code.  In place of
+    a legal notice, here is a blessing:
+
+       May you do good and not evil.
+       May you find forgiveness for yourself and forgive others.
+       May you share freely, never taking more than you give.
+
+The extension's license (LGPL-3.0-or-later) covers the driver's code and not this library.

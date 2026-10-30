@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<oor:component-schema
+  xmlns:oor="http://openoffice.org/2001/registry"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  oor:package="dev.rebotcoft.sdbc"
+  oor:name="pysqlite"
+  xml:lang="en-US">
+  <component>
+    <prop oor:name="Trace" oor:type="xs:boolean"/>
+    <prop oor:name="LogPath" oor:type="xs:string"/>
+    <prop oor:name="LogRetentionDays" oor:type="xs:int"/>
+    <prop oor:name="CreateIfMissing" oor:type="xs:boolean"/>
+    <prop oor:name="LockTimeoutSeconds" oor:type="xs:int"/>
+    <prop oor:name="ForeignKeys" oor:type="xs:boolean"/>
+    <prop oor:name="ReadOnly" oor:type="xs:boolean"/>
+    <prop oor:name="JournalMode" oor:type="xs:string"/>
+    <prop oor:name="FullLoadLimit" oor:type="xs:int"/>
+    <prop oor:name="WindowSize" oor:type="xs:int"/>
+    <prop oor:name="TransactionMode" oor:type="xs:string"/>
+    <prop oor:name="DateTimeFormat" oor:type="xs:string"/>
+    <prop oor:name="DateTimeZone" oor:type="xs:string"/>
+    <prop oor:name="NamesLanguage" oor:type="xs:string"/>
+    <prop oor:name="AutoIncrementReuse" oor:type="xs:boolean"/>
+    <prop oor:name="RowIdAsKey" oor:type="xs:boolean"/>
+    <prop oor:name="OldLibraryWarning" oor:type="xs:boolean"/>
+    <prop oor:name="DefensiveMode" oor:type="xs:boolean"/>
+    <prop oor:name="UntrustedSchema" oor:type="xs:boolean"/>
+    <prop oor:name="LimitsProfile" oor:type="xs:string"/>
+  </component>
+</oor:component-schema>

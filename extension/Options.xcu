@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<oor:component-data
+  xmlns:install="http://openoffice.org/2004/installation"
+  xmlns:oor="http://openoffice.org/2001/registry"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  oor:package="dev.rebotcoft.sdbc"
+  oor:name="pysqlite">
+  <prop oor:name="Trace" oor:op="fuse">
+    <value>false</value>
+  </prop>
+  <prop oor:name="LogPath" oor:op="fuse">
+    <value></value>
+  </prop>
+  <prop oor:name="LogRetentionDays" oor:op="fuse">
+    <value>14</value>
+  </prop>
+  <prop oor:name="CreateIfMissing" oor:op="fuse">
+    <value>false</value>
+  </prop>
+  <prop oor:name="LockTimeoutSeconds" oor:op="fuse">
+    <value>5</value>
+  </prop>
+  <prop oor:name="ForeignKeys" oor:op="fuse">
+    <value>false</value>
+  </prop>
+  <prop oor:name="ReadOnly" oor:op="fuse">
+    <value>false</value>
+  </prop>
+  <prop oor:name="JournalMode" oor:op="fuse">
+    <value>delete</value>
+  </prop>
+  <prop oor:name="FullLoadLimit" oor:op="fuse">
+    <value>50000</value>
+  </prop>
+  <prop oor:name="WindowSize" oor:op="fuse">
+    <value>1000</value>
+  </prop>
+  <prop oor:name="TransactionMode" oor:op="fuse">
+    <value>free</value>
+  </prop>
+  <prop oor:name="DateTimeFormat" oor:op="fuse">
+    <value>text</value>
+  </prop>
+  <prop oor:name="DateTimeZone" oor:op="fuse">
+    <value>local</value>
+  </prop>
+  <prop oor:name="NamesLanguage" oor:op="fuse">
+    <value>auto</value>
+  </prop>
+  <prop oor:name="AutoIncrementReuse" oor:op="fuse">
+    <value>false</value>
+  </prop>
+  <prop oor:name="RowIdAsKey" oor:op="fuse">
+    <value>false</value>
+  </prop>
+  <prop oor:name="OldLibraryWarning" oor:op="fuse">
+    <value>true</value>
+  </prop>
+  <prop oor:name="DefensiveMode" oor:op="fuse">
+    <value>false</value>
+  </prop>
+  <prop oor:name="UntrustedSchema" oor:op="fuse">
+    <value>false</value>
+  </prop>
+  <prop oor:name="LimitsProfile" oor:op="fuse">
+    <value>none</value>
+  </prop>
+</oor:component-data>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns="http://openoffice.org/2010/uno-components">
+  <component loader="com.sun.star.loader.Python" uri="service/Driver.py">
+    <implementation name="dev.rebotcoft.sdbc.pysqlite.Driver">
+      <service name="dev.rebotcoft.sdbc.pysqlite.Driver"/>
+      <service name="com.sun.star.sdbc.Driver"/>
+    </implementation>
+  </component>
+  <component loader="com.sun.star.loader.Python" uri="service/SettingsHandler.py">
+    <implementation name="dev.rebotcoft.sdbc.pysqlite.SettingsHandler">
+      <service name="com.sun.star.frame.ProtocolHandler"/>
+    </implementation>
+  </component>
+  <component loader="com.sun.star.loader.Python" uri="service/OptionsHandler.py">
+    <implementation name="dev.rebotcoft.sdbc.pysqlite.OptionsHandler">
+      <service name="dev.rebotcoft.sdbc.pysqlite.OptionsHandler"/>
+    </implementation>
+  </component>
+</components>

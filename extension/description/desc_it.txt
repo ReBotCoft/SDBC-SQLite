@@ -1,0 +1,3 @@
+Driver SDBC che collega LibreOffice Base ai file di database SQLite.
+Richiede Windows a 64 bit e LibreOffice 26.8 o superiore. SQLite è fornito con l'estensione.
+Fornita "così com'è", senza garanzia. Fare una copia dei database prima dell'uso.
